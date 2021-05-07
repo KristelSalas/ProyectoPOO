@@ -5,7 +5,7 @@ public abstract class Ejercicio {
     private String nombreEjercicio;
     private int repeticiones;
     private String nombreImagen;
-    private int peso;
+
     private float tiempoTardado;
 
     public Ejercicio(String nombreEjercicio, int repeticiones, String nombreImagen, float tiempoTardado) {
@@ -19,7 +19,7 @@ public abstract class Ejercicio {
         this.nombreEjercicio = nombreEjercicio;
         this.repeticiones = repeticiones;
         this.nombreImagen = nombreImagen;
-        this.peso = peso;
+
         this.tiempoTardado = tiempoTardado;
     }
 
@@ -35,9 +35,6 @@ public abstract class Ejercicio {
         this.nombreImagen = nombreImagen;
     }
 
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
 
     public void setTiempoTardado(float tiempoTardado) {
         this.tiempoTardado = tiempoTardado;
@@ -55,9 +52,6 @@ public abstract class Ejercicio {
         return nombreImagen;
     }
 
-    public int getPeso() {
-        return peso;
-    }
 
     public float getTiempoTardado() {
         return tiempoTardado;

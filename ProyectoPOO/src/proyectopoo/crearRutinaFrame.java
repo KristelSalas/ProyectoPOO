@@ -8,15 +8,21 @@ package proyectopoo;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 /**
  *
  * @author antho
  */
+
+
+
 public class crearRutinaFrame extends javax.swing.JFrame {
 
 DefaultListModel model = new DefaultListModel();
+
+Rutina rutinacustom = new Rutina("");
 
     /**
      * Creates new form crearRutinaFrame
@@ -27,8 +33,29 @@ DefaultListModel model = new DefaultListModel();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         
+        
     }
-
+    
+    public Rutina crearRutina(String nombre){
+        
+    Rutina RutinaPers = new Rutina(nombre);
+    
+    return RutinaPers;
+    }
+    
+    public void agregarEjercicio(Rutina rutinaCustom,String nombre, int repeticiones){
+        String dato = datoOculto.getText();
+        float tiempoTardado = (float) 0.00;
+        String nombreI = nombre+".png";
+        int peso = 0;
+        
+        if (dato == "superior"){
+            Ejercicio ejer = new EjercicioArriba(nombre, repeticiones, nombreI, peso ,tiempoTardado);
+            rutinaCustom.agregarEjerciciosaRutina(ejer);
+        }
+    
+    }
+    
     public void llenarCheckbox() {
     String[] superior = {"Bench Press","Aperturas con Máquina","Chest Press con Máquina","Chest Press con Mancuernas","Aperturas con Mancuernas","Push Up","Extensión de Codo","Press Francés con Mancuernas","Jalón Abierto","Remo con Mancuerna Individual"};
     String[] abdomen = {"Planck Frontal","Plack Swiss Ball","Planck Lateral","Abdominal McGuill","Birdog","Planck Swiss Ball Dinámico","Abdominal Normal","Elevación de Piernas","Planck Taps","Planck Hips"};
@@ -72,12 +99,7 @@ DefaultListModel model = new DefaultListModel();
         jCheckBox9.setText(piernas[8]);
         jCheckBox10.setText(piernas[9]);
     }
-    
-        
-        
-  
-    
-    
+
     }
     
     public void my_update(String str) {
@@ -123,6 +145,12 @@ DefaultListModel model = new DefaultListModel();
         jTextField1.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 3));
+        jTextField1.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -340,182 +368,182 @@ DefaultListModel model = new DefaultListModel();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-        if (jCheckBox1.isSelected()){
-        
         String name = jCheckBox1.getText();
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox1.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina().toString());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox1.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        if (jCheckBox2.isSelected()){
-        
         String name = jCheckBox2.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox2.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox2.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        if (jCheckBox3.isSelected()){
-        
         String name = jCheckBox3.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox3.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox3.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
-        if (jCheckBox4.isSelected()){
-        
         String name = jCheckBox4.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox4.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox4.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
-        if (jCheckBox5.isSelected()){
-        
         String name = jCheckBox5.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox5.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox5.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
-        if (jCheckBox6.isSelected()){
-        
         String name = jCheckBox6.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox6.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox6.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox6ActionPerformed
 
     private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
-        if (jCheckBox7.isSelected()){
-        
         String name = jCheckBox7.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox7.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox7.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox7ActionPerformed
 
     private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
-        if (jCheckBox8.isSelected()){
-        
         String name = jCheckBox8.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox8.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox8.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox8ActionPerformed
 
     private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
-        if (jCheckBox9.isSelected()){
-        
         String name = jCheckBox9.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox9.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox9.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox9ActionPerformed
 
     private void jCheckBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox10ActionPerformed
-        if (jCheckBox10.isSelected()){
-        
         String name = jCheckBox10.getText();
-        
-        model.addElement(name);
-        
-        jList1.setModel(model);
+        if (jCheckBox10.isSelected()){
+            String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
+            int numreps = Integer.parseInt(reps);
+            agregarEjercicio(rutinacustom, name, numreps);
+            System.out.println(rutinacustom.getEjerciciosRutina());
+            model.addElement(name);
+            jList1.setModel(model);
         }
         else{
-        String name = jCheckBox10.getText();
-        model.removeElement(name);
-        
-        jList1.setModel(model);
+            //borrarEjercicio(name)
+            model.removeElement(name);
+            jList1.setModel(model);
         }
     }//GEN-LAST:event_jCheckBox10ActionPerformed
 
@@ -533,6 +561,18 @@ DefaultListModel model = new DefaultListModel();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.out.println(model);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        System.out.println("test");
+        String nombreR = jTextField1.getText();
+        if (nombreR.equals("")){
+        jTextField1.setText("Rutina Personalizada");
+        jTextField1.enable(false);
+        }
+       
+        rutinacustom.setNombreRutina(nombreR);
+        
+    }//GEN-LAST:event_jTextField1FocusLost
 
    
     
