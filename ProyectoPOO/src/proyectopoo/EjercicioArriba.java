@@ -3,9 +3,10 @@ package proyectopoo;
 public class EjercicioArriba extends Ejercicio {
     
     private int peso;
-    
-    public EjercicioArriba(String nombreEjercicio, int repeticiones, String nombreImagen, int peso, float tiempoTardado) {
-        super(nombreEjercicio, repeticiones, nombreImagen, peso, tiempoTardado);
+
+    public EjercicioArriba(int peso, String nombreEjercicio, int repeticiones, String nombreImagen, float tiempoTardado) {
+        super(nombreEjercicio, repeticiones, nombreImagen, tiempoTardado);
+        this.peso = peso;
     }
 
     @Override

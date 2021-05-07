@@ -2,14 +2,12 @@ package proyectopoo;
 
 public class EjercicioAbajo extends Ejercicio{
 
-    public EjercicioAbajo(String nombreEjercicio, int repeticiones, String nombreImagen, float tiempoTardado) {
-        super(nombreEjercicio, repeticiones, nombreImagen, tiempoTardado);
-    }
+    int peso;
 
-    public EjercicioAbajo(String nombreEjercicio, int repeticiones, String nombreImagen, int peso, float tiempoTardado) {
-        super(nombreEjercicio, repeticiones, nombreImagen, peso, tiempoTardado);
+    public EjercicioAbajo(int peso, String nombreEjercicio, int repeticiones, String nombreImagen, float tiempoTardado) {
+        super(nombreEjercicio, repeticiones, nombreImagen, tiempoTardado);
+        this.peso = peso;
     }
-    
-    
+   
     
 }

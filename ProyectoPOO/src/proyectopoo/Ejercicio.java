@@ -5,21 +5,12 @@ public abstract class Ejercicio {
     private String nombreEjercicio;
     private int repeticiones;
     private String nombreImagen;
-
     private float tiempoTardado;
 
     public Ejercicio(String nombreEjercicio, int repeticiones, String nombreImagen, float tiempoTardado) {
         this.nombreEjercicio = nombreEjercicio;
         this.repeticiones = repeticiones;
         this.nombreImagen = nombreImagen;
-        this.tiempoTardado = tiempoTardado;
-    }
-
-    public Ejercicio(String nombreEjercicio, int repeticiones, String nombreImagen, int peso, float tiempoTardado) {
-        this.nombreEjercicio = nombreEjercicio;
-        this.repeticiones = repeticiones;
-        this.nombreImagen = nombreImagen;
-
         this.tiempoTardado = tiempoTardado;
     }
 

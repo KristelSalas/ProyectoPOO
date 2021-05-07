@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectopoo;
 
+
+import java.io.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-/**
- *
- * @author antho
- */
 public class loginFrame extends javax.swing.JFrame {
 
     /**
@@ -123,25 +116,56 @@ public class loginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    
+    public boolean buscarPersona(String correo, String contra){
+      File archivo = null;
+      FileReader fr = null;
+      BufferedReader br = null;
+
+        try {
+         // Apertura del archivo y creacion de BufferedReader 
+            archivo = new File ("Personas.txt");
+            fr = new FileReader (archivo);
+            br = new BufferedReader(fr);
+
+         // Lectura del archivo
+            String linea;
+            while((linea=br.readLine())!= null){
+                if(linea.contains(correo) && linea.contains(contra)) 
+                {
+                   return true;
+                }
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }finally{
+         // Se cierra el archivo
+            try{                    
+            if( null != fr ){   
+                fr.close();     
+            }                  
+            }catch (Exception e2){ 
+                e2.printStackTrace();
+            }
+        }
+      return false;
+    }
     
     private void login(String correo, String contrase){
     
     Boolean valida = false;
    
-    //Persona person1 = buscarPersona(correo);
+    boolean aja = buscarPersona(correo,contrase);
     
-    //if (contrase == person1.getContraseña()){
-    //    valida = true;
-    //}
-
-    
-    //*AQUIIIIIIIIIIIIIIIIIII
+    if (aja==true){
+        valida = true;
+    }
     
     if (valida == true){
     
         mainFrame frame = new mainFrame();
         frame.show();
+        
         this.dispose();   
     }
     }
@@ -159,6 +183,7 @@ public class loginFrame extends javax.swing.JFrame {
         String correo = correoTF.getText();
         String contra = contraTF.getText();
         login(correo, contra);
+        
 
 
         // TODO add your handling code here:

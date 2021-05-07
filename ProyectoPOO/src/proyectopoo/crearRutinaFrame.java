@@ -50,7 +50,7 @@ Rutina rutinacustom = new Rutina("");
         int peso = 0;
         
         if (dato == "superior"){
-            Ejercicio ejer = new EjercicioArriba(nombre, repeticiones, nombreI, peso ,tiempoTardado);
+            Ejercicio ejer = new EjercicioArriba(peso,nombre, repeticiones, nombreI,tiempoTardado);
             rutinaCustom.agregarEjerciciosaRutina(ejer);
         }
     
