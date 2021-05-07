@@ -1,7 +1,7 @@
 package proyectopoo;
 import java.util.LinkedList;
 
-public class Persona {
+public class Persona implements java.io.Serializable{
     
     private String nombre;
     private String apellido;
