@@ -1,3 +1,0 @@
-
-Persona{nombre:Kristel, apellido:Salas, cedula:208180970, correo:Kristelsalas@gmail.com, contraseña:Kristel123, rutinasRealizadas:[], rutinaPersonalizada:[]}
-

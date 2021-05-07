@@ -1,103 +1,119 @@
 package proyectopoo;
 import java.io.*;
-import java.util.Scanner;
-
 
 public class ProyectoPOO 
 {
     public static void main(String[] args) 
     {
-        //File archivo = new File("Personas.txt");se declara el objeto x con ese nombre dentro del directorio de trabajo por lo que no se ocupa un path directo
-        //System.out.println(archivo.getAbsolutePath());obtiene el path
-        //System.out.println(archivo.exists());se fija si existe
-        Persona p1 = new Persona("Kristel","Salas", 208180970,"Kristelsalas@gmail.com","Kristel123");
-        //escribirEnPersona(p1);
-        //leerPersonas(p1);
-        leerotramanera();
-      
-        loginFrame frame = new loginFrame();
-        frame.show();
+        
+        Persona p1 = new Persona("Kristel", "Salas", 208180970, "Kristel@gmail.com", "Kristel123");
+        escribirEnPersona(p1);
+        leerPersonas();
+        
+        Ejercicio e1 = new EjercicioArriba(0,"No se",2,"",2);
+        Rutina r1 = new Rutina("No se");
+        r1.agregarEjerciciosaRutina(e1);
+        //escribirRutinasArriba(r1);
+        
+        Ejercicio e2 = new EjercicioMedio("No se",2,"",2);
+        Rutina r2 = new Rutina("No se");
+        r2.agregarEjerciciosaRutina(e2);
+        //escribirRutinasMedio(r2);
+        
+        Ejercicio e3 = new EjercicioAbajo(0,"No se",2,"",2);
+        Rutina r3 = new Rutina("No se");
+        //r3.agregarEjerciciosaRutina(e3);
+        //escribirRutinasMedio(r3);
+        
+        //loginFrame frame = new loginFrame();
+        //frame.show();
     }
     
-    
-    
-    
-    
-    public static void leerotramanera(){
-        File f = new File("Personas.txt");
-	Scanner s;
-	try {
-            s = new Scanner(f);
-            while (s.hasNextLine()) {
-		String linea = s.nextLine();
-		Scanner sl = new Scanner(linea);
-		//sl.useDelimiter("\\s*,\\s*");
-		//System.out.println(sl.next());
-		//System.out.println(sl.next());
-		//System.out.println(sl.next());
+    public static void escribirEnPersona(Persona p){//recibe la persona que se va a insertar en el archivo    
+       try {
+            FileOutputStream ficheroSalida = new FileOutputStream("Personas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
+            // se escriben los objetos de la clase Persona
+            objetoSalida.writeObject(p);//escribir
+            objetoSalida.close();//cerrar
+            } catch (FileNotFoundException e) {
+                System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            s.close();
-	} catch (FileNotFoundException e) {
-            e.printStackTrace();
-	}
-    
     }
     
-    
-    
-    
-    
-    
-    public static void escribirEnPersona(Persona p){//recibe la persona que se va a insertar en el archivo
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-            fichero = new FileWriter("Personas.txt",true);//con el true escribe al final del documento si el true lo remplaza por uno nuevo 
-            pw = new PrintWriter(fichero);
-            
-            pw.println(p);//la acción de escribir
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           if (null != fichero)
-              fichero.close();//cierre del archivo
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-        }
-    }
-    
-    public static void leerPersonas(Persona p){  
-      File archivo = null;
-      FileReader fr = null;
-      BufferedReader br = null;
-
+    public static void leerPersonas(){  
       try {
-         // Apertura del archivo y creacion de BufferedReader 
-         archivo = new File ("Personas.txt");
-         fr = new FileReader (archivo);
-         br = new BufferedReader(fr);
-
-         // Lectura del archivo
-         String linea;
-         //while((linea=br.readLine())!=null)
-            System.out.println(p.getCorreo());
-      }
-      catch(Exception e){
-         e.printStackTrace();
-      }finally{
-         // Se cierra el archivo
-         try{                    
-            if( null != fr ){   
-               fr.close();     
-            }                  
-         }catch (Exception e2){ 
-            e2.printStackTrace();
-         }
-      }
+            FileInputStream ficheroEntrada = new FileInputStream("Personas.bin");
+            ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);
+            // se leen dos objetos de la clase Persona
+            Persona p1 = (Persona)objetoEntrada.readObject();//leer
+            //Persona p2 = (Persona)objetoEntrada.readObject();//leer
+            // se cierra el flujo de objetos objetoEntrada
+            objetoEntrada.close();//cerrar archivo
+            //System.out.println("DNI\t Nombre");
+            System.out.println(p1.toString());
+            //System.out.println(p2.toString());
+            } catch (FileNotFoundException e) {
+            System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+            System.out.println(e.getMessage());
+            } catch (Exception e) {
+            System.out.println(e.getMessage());
+            };
     }
     
+    
+    public static void escribirRutinasArriba(Rutina r){//recibe la persona que se va a insertar en el archivo    
+       try {
+            FileOutputStream ficheroSalida = new FileOutputStream("Personas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
+            // se escriben los objetos de la clase Persona
+            objetoSalida.writeObject(r);//escribir
+            objetoSalida.close();//cerrar
+            } catch (FileNotFoundException e) {
+                System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+    }
+    
+    
+    public static void escribirRutinasMedio(Rutina r){//recibe la persona que se va a insertar en el archivo    
+       try {
+            FileOutputStream ficheroSalida = new FileOutputStream("Personas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
+            // se escriben los objetos de la clase Persona
+            objetoSalida.writeObject(r);//escribir
+            objetoSalida.close();//cerrar
+            } catch (FileNotFoundException e) {
+                System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+    }
+    
+    
+    public static void escribirRutinasAbajo(Rutina r){//recibe la persona que se va a insertar en el archivo    
+       try {
+            FileOutputStream ficheroSalida = new FileOutputStream("Personas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
+            // se escriben los objetos de la clase Persona
+            objetoSalida.writeObject(r);//escribir
+            objetoSalida.close();//cerrar
+            } catch (FileNotFoundException e) {
+                System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+    }
 }

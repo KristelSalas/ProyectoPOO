@@ -14,6 +14,14 @@ public class Rutina {
     public void agregarEjerciciosaRutina(Ejercicio ejercicio){
         ejerciciosRutina.add(ejercicio);
     }
+    
+    public void quitarEjerciciosRutina(String nombre){
+        for(Ejercicio x: ejerciciosRutina){
+            if(x.getNombreEjercicio() == nombre){
+                ejerciciosRutina.remove(x);
+            }
+        }
+    }
 
     public void setNombreRutina(String nombreRutina) {
         this.nombreRutina = nombreRutina;
