@@ -25,8 +25,8 @@ public class ProyectoPOO
         //r3.agregarEjerciciosaRutina(e3);
         //escribirRutinasMedio(r3);
         
-        //loginFrame frame = new loginFrame();
-        //frame.show();
+        loginFrame frame = new loginFrame();
+        frame.show();
     }
     
     public static void escribirEnPersona(Persona p){//recibe la persona que se va a insertar en el archivo    

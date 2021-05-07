@@ -54,7 +54,14 @@ Rutina rutinacustom = new Rutina("");
         
         if (dato == "superior"){
             Ejercicio ejer = new EjercicioArriba(peso,nombre, repeticiones, nombreI,tiempoTardado);
-            rutinaCustom.agregarEjerciciosaRutina(ejer);
+            rutinacustom.agregarEjerciciosaRutina(ejer);
+        } else if (dato == "abdomen"){
+            Ejercicio ejer = new EjercicioMedio(nombre, repeticiones, nombreI,tiempoTardado);
+            rutinacustom.agregarEjerciciosaRutina(ejer);
+        }
+        else {
+            Ejercicio ejer = new EjercicioAbajo(peso, nombre, repeticiones, nombreI,tiempoTardado);
+            rutinacustom.agregarEjerciciosaRutina(ejer);
         }
     
     }
@@ -377,16 +384,17 @@ Rutina rutinacustom = new Rutina("");
             agregarEjercicio(rutinacustom, name, numreps);
             
             for (Ejercicio ejer : rutinacustom.getEjerciciosRutina()){
-                System.out.println(rutinacustom.getNombreRutina() + " " + ejer.getNombreEjercicio() + " " + ejer.getRepeticiones());
+                System.out.println(ejer.getNombreEjercicio() + " " + ejer.getRepeticiones());
             }
             
             model.addElement(name);
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
@@ -402,9 +410,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
@@ -420,9 +429,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
@@ -438,9 +448,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
 
@@ -456,9 +467,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
@@ -474,9 +486,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox6ActionPerformed
 
@@ -492,9 +505,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox7ActionPerformed
 
@@ -510,9 +524,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox8ActionPerformed
 
@@ -528,9 +543,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox9ActionPerformed
 
@@ -546,9 +562,10 @@ Rutina rutinacustom = new Rutina("");
             jList1.setModel(model);
         }
         else{
-            //borrarEjercicio(name)
             model.removeElement(name);
             jList1.setModel(model);
+            rutinacustom.quitarEjerciciosRutina(name);
+            
         }
     }//GEN-LAST:event_jCheckBox10ActionPerformed
 
@@ -577,7 +594,6 @@ Rutina rutinacustom = new Rutina("");
         jTextField1.setText("Rutina Personalizada");
         nombreR = jTextField1.getText();
         rutinacustom.setNombreRutina(nombreR);
-        jTextField1.enable(false);
         }
        
         rutinacustom.setNombreRutina(nombreR);

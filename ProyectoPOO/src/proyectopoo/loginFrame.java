@@ -115,51 +115,10 @@ public class loginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public boolean buscarPersona(String correo, String contra){
-      File archivo = null;
-      FileReader fr = null;
-      BufferedReader br = null;
-
-        try {
-         // Apertura del archivo y creacion de BufferedReader 
-            archivo = new File ("Personas.txt");
-            fr = new FileReader (archivo);
-            br = new BufferedReader(fr);
-
-         // Lectura del archivo
-            String linea;
-            while((linea=br.readLine())!= null){
-                if(linea.contains(correo) && linea.contains(contra)) 
-                {
-                   return true;
-                }
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }finally{
-         // Se cierra el archivo
-            try{                    
-            if( null != fr ){   
-                fr.close();     
-            }                  
-            }catch (Exception e2){ 
-                e2.printStackTrace();
-            }
-        }
-      return false;
-    }
-    
     private void login(String correo, String contrase){
     
-    Boolean valida = false;
-   
-    boolean aja = buscarPersona(correo,contrase);
-    
-    if (aja==true){
-        valida = true;
-    }
+    Boolean valida = true;
+
     
     if (valida == true){
     
