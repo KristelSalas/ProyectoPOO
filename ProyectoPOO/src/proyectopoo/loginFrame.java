@@ -1,6 +1,5 @@
 package proyectopoo;
 
-
 import java.io.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -115,19 +114,49 @@ public class loginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void login(String correo, String contrase){
     
-    Boolean valida = true;
+    public boolean buscarPersona(String correo, String contra){
+        try {
+            FileInputStream ficheroEntrada = new FileInputStream("Personas.bin");
+            ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);
+            
+            // se leen dos objetos de la clase Persona
+            Object aux = objetoEntrada.readObject();
+            while(aux != null)
+            {
+                Persona p1 = (Persona)aux;
+                if(p1.getCorreo().equals(correo) && p1.getContraseña().equals(contra)){
+                    return true;
+                }    
+                aux = objetoEntrada.readObject();
+            }
+            
+            objetoEntrada.close();//cerrar archivo
 
-    
-    if (valida == true){
-    
-        mainFrame frame = new mainFrame();
-        frame.show();
-        
-        this.dispose();   
+        } catch (FileNotFoundException e) {
+            System.out.println("¡El fichero no existe!");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        };
+      return false;
     }
+    
+    public void login(String correo, String contrase){    
+        Boolean valida = false;
+        boolean aja = buscarPersona(correo,contrase);
+        if (aja==true){
+            valida = true;
+            System.out.println(valida);
+        }
+        if (valida == true){  
+            mainFrame frame = new mainFrame();
+            frame.show(); 
+            this.dispose();   
+         }
     }
+    
     
     
     private void correoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoTFActionPerformed
