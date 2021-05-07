@@ -7,8 +7,8 @@ public class ProyectoPOO
     {
         
         Persona p1 = new Persona("Kristel", "Salas", 208180970, "Kristel@gmail.com", "Kristel123");
-        escribirEnPersona(p1);
-        leerPersonas();
+        //escribirEnPersona(p1);
+        //leerPersonas();
         
         Ejercicio e1 = new EjercicioArriba(0,"No se",2,"",2);
         Rutina r1 = new Rutina("No se");
