@@ -15,8 +15,8 @@ public class ProyectoPOO
         //leerPersonas(p1);
         leerotramanera();
       
-        //loginFrame frame = new loginFrame();
-        //frame.show();
+        loginFrame frame = new loginFrame();
+        frame.show();
     }
     
     

@@ -22,6 +22,12 @@ public class Rutina {
     public LinkedList<Ejercicio> getEjerciciosRutina() {
         return ejerciciosRutina;
     }
+
+    public String getNombreRutina() {
+        return nombreRutina;
+    }
+    
+    
     
     
 }
