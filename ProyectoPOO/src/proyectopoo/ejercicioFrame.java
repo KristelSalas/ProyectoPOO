@@ -5,6 +5,9 @@
  */
 package proyectopoo;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author antho
@@ -16,6 +19,8 @@ public class ejercicioFrame extends javax.swing.JFrame {
      */
     public ejercicioFrame() {
         initComponents();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**
@@ -27,21 +32,138 @@ public class ejercicioFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tiempoMinTF = new javax.swing.JTextField();
+        tiempoSecTF = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        pesoTF = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        repsTF = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Dubai", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Nombre de Rutina");
+
+        jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Nombre de Ejercicio");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectopoo/Superior Gif/Aperturas con Mancuernas.gif"))); // NOI18N
+        jLabel3.setText("1");
+
+        jLabel4.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        jLabel4.setText("Tiempo");
+
+        tiempoMinTF.setBackground(new java.awt.Color(204, 204, 204));
+        tiempoMinTF.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        tiempoMinTF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 3));
+
+        tiempoSecTF.setBackground(new java.awt.Color(204, 204, 204));
+        tiempoSecTF.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        tiempoSecTF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 3));
+
+        jLabel5.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        jLabel5.setText("Peso");
+
+        pesoTF.setBackground(new java.awt.Color(204, 204, 204));
+        pesoTF.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        pesoTF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 3));
+        pesoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesoTFActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        jLabel6.setText("Repeticiones");
+
+        repsTF.setBackground(new java.awt.Color(204, 204, 204));
+        repsTF.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        repsTF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 3));
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setFont(new java.awt.Font("Dubai", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setText("Siguiente");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 3));
+        jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel5)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(repsTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                                .addComponent(pesoTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tiempoMinTF, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGap(18, 18, 18)
+                            .addComponent(tiempoSecTF, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tiempoSecTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tiempoMinTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(pesoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(repsTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pesoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesoTFActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +201,16 @@ public class ejercicioFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField pesoTF;
+    private javax.swing.JTextField repsTF;
+    private javax.swing.JTextField tiempoMinTF;
+    private javax.swing.JTextField tiempoSecTF;
     // End of variables declaration//GEN-END:variables
 }

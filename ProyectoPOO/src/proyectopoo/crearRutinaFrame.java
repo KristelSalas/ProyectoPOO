@@ -31,17 +31,20 @@ Rutina rutinacustom = new Rutina("");
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        
-        
-        
+           
     }
     
-    public Rutina crearRutina(String nombre){
-        
-    Rutina RutinaPers = new Rutina(nombre);
     
-    return RutinaPers;
-    }
+    
+    private void asignarRutina(){
+        //persona que hizo login
+        //
+        
+        
+        
+    
+    
+    } 
     
     public void agregarEjercicio(Rutina rutinaCustom,String nombre, int repeticiones){
         String dato = datoOculto.getText();
@@ -102,9 +105,6 @@ Rutina rutinacustom = new Rutina("");
 
     }
     
-    public void my_update(String str) {
-        jTextField1.setText(str);
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -257,6 +257,7 @@ Rutina rutinacustom = new Rutina("");
             }
         });
 
+        jList1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 3));
         jScrollPane1.setViewportView(jList1);
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
@@ -374,7 +375,11 @@ Rutina rutinacustom = new Rutina("");
             
             int numreps = Integer.parseInt(reps);
             agregarEjercicio(rutinacustom, name, numreps);
-            System.out.println(rutinacustom.getEjerciciosRutina().toString());
+            
+            for (Ejercicio ejer : rutinacustom.getEjerciciosRutina()){
+                System.out.println(rutinacustom.getNombreRutina() + " " + ejer.getNombreEjercicio() + " " + ejer.getRepeticiones());
+            }
+            
             model.addElement(name);
             jList1.setModel(model);
         }
@@ -560,6 +565,9 @@ Rutina rutinacustom = new Rutina("");
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.out.println(model);
+        ejercicioFrame frame = new ejercicioFrame();
+        frame.show();
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
@@ -567,6 +575,8 @@ Rutina rutinacustom = new Rutina("");
         String nombreR = jTextField1.getText();
         if (nombreR.equals("")){
         jTextField1.setText("Rutina Personalizada");
+        nombreR = jTextField1.getText();
+        rutinacustom.setNombreRutina(nombreR);
         jTextField1.enable(false);
         }
        
