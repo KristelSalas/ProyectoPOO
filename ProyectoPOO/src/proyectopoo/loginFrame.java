@@ -5,6 +5,9 @@
  */
 package proyectopoo;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author antho
@@ -16,8 +19,8 @@ public class loginFrame extends javax.swing.JFrame {
      */
     public loginFrame() {
         initComponents();
-        
-        this.setExtendedState(MAXIMIZED_BOTH);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**
@@ -31,7 +34,7 @@ public class loginFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         correoTF = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        contraTF = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -55,10 +58,10 @@ public class loginFrame extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(51, 51, 51));
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
+        contraTF.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
+        contraTF.setForeground(new java.awt.Color(51, 51, 51));
+        contraTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        contraTF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
         jLabel2.setText("Contraseña");
@@ -81,55 +84,65 @@ public class loginFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(785, 785, 785)
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(299, 299, 299))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPasswordField1)
-                            .addComponent(correoTF)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(contraTF)
+                        .addComponent(correoTF)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)))
-                .addGap(783, 783, 783))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(271, 271, 271)))
+                .addGap(83, 83, 83))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(81, 81, 81)
                 .addComponent(jLabel1)
-                .addGap(64, 64, 64)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(correoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addComponent(contraTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void login(){
     
-    Boolean valida = true;
+    
+    
+    private void login(String correo, String contrase){
+    
+    Boolean valida = false;
+   
+    //Persona person1 = buscarPersona(correo);
+    
+    //if (contrase == person1.getContraseña()){
+    //    valida = true;
+    //}
+
+    
+    //*AQUIIIIIIIIIIIIIIIIIII
+    
     if (valida == true){
     
         mainFrame frame = new mainFrame();
         frame.show();
-        this.dispose();
-        
+        this.dispose();   
     }
     }
     
@@ -142,8 +155,10 @@ public class loginFrame extends javax.swing.JFrame {
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        login();
+        
+        String correo = correoTF.getText();
+        String contra = contraTF.getText();
+        login(correo, contra);
 
 
         // TODO add your handling code here:
@@ -185,11 +200,11 @@ public class loginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField contraTF;
     private javax.swing.JTextField correoTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }

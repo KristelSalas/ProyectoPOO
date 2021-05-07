@@ -14,6 +14,14 @@ public class Rutina {
     public void agregarEjerciciosaRutina(Ejercicio ejercicio){
         ejerciciosRutina.add(ejercicio);
     }
+
+    public void setNombreRutina(String nombreRutina) {
+        this.nombreRutina = nombreRutina;
+    }
+
+    public LinkedList<Ejercicio> getEjerciciosRutina() {
+        return ejerciciosRutina;
+    }
     
     
 }
