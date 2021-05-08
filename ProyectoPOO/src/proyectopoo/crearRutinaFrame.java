@@ -7,6 +7,10 @@ package proyectopoo;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -34,22 +38,18 @@ Rutina rutinacustom = new Rutina("");
            
     }
     
-    
-    
     private void asignarRutina(){
-        //persona que hizo login
-        //
-        
-        
-        
-    
-    
+        Persona p = ProyectoPOO.buscarPersona(correoOculto.getText(), contraOculta.getText());
+        p.agregarEjerciciosPersonalizados(rutinacustom);
+        System.out.println("RUTINA CUSTOM: " + rutinacustom.getEjerciciosRutina());
+        ProyectoPOO.escribirRutinasPersonas(p);
+        ProyectoPOO.leerPersonas2();  
     } 
     
-    public void agregarEjercicio(Rutina rutinaCustom,String nombre, int repeticiones){
+    public void agregarEjercicio(String nombre, int repeticiones){
         String dato = datoOculto.getText();
         float tiempoTardado = (float) 0.00;
-        String nombreI = nombre+".png";
+        String nombreI = nombre+".gif";
         int peso = 0;
         
         if (dato == "superior"){
@@ -134,6 +134,8 @@ Rutina rutinacustom = new Rutina("");
         datoOculto = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        correoOculto = new javax.swing.JLabel();
+        contraOculta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Crear Rutina");
@@ -297,12 +299,15 @@ Rutina rutinacustom = new Rutina("");
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(correoOculto)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(datoOculto)
                         .addGap(168, 168, 168))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,7 +315,9 @@ Rutina rutinacustom = new Rutina("");
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(contraOculta)
+                                .addGap(56, 56, 56)
                                 .addComponent(jTextField1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,34 +338,39 @@ Rutina rutinacustom = new Rutina("");
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox4)
-                        .addGap(7, 7, 7)
-                        .addComponent(jCheckBox5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox10))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(correoOculto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox4)
+                                .addGap(7, 7, 7)
+                                .addComponent(jCheckBox5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox10))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(contraOculta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(datoOculto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -381,7 +393,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio(name, numreps);
             
             for (Ejercicio ejer : rutinacustom.getEjerciciosRutina()){
                 System.out.println(ejer.getNombreEjercicio() + " " + ejer.getRepeticiones());
@@ -404,7 +416,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio( name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -423,7 +435,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio( name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -442,7 +454,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio(name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -461,7 +473,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio( name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -480,7 +492,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio( name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -499,7 +511,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio( name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -518,7 +530,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio(name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -537,7 +549,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio(name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -556,7 +568,7 @@ Rutina rutinacustom = new Rutina("");
             String reps = JOptionPane.showInputDialog("Ingrese el número de repeticiones", null);
             
             int numreps = Integer.parseInt(reps);
-            agregarEjercicio(rutinacustom, name, numreps);
+            agregarEjercicio(name, numreps);
             System.out.println(rutinacustom.getEjerciciosRutina());
             model.addElement(name);
             jList1.setModel(model);
@@ -581,10 +593,15 @@ Rutina rutinacustom = new Rutina("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.out.println(model);
+        asignarRutina();
         ejercicioFrame frame = new ejercicioFrame();
+        frame.contraOcultaEje.setText(contraOculta.getText());
+        frame.correoOcultoEje.setText(correoOculto.getText());
+        frame.contraOcultaEje.setVisible(false);
+        frame.correoOcultoEje.setVisible(false);
         frame.show();
         this.dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
@@ -644,6 +661,8 @@ Rutina rutinacustom = new Rutina("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel contraOculta;
+    public javax.swing.JLabel correoOculto;
     public javax.swing.JLabel datoOculto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

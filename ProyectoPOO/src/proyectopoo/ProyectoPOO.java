@@ -7,7 +7,7 @@ public class ProyectoPOO
     {
         
         Persona p1 = new Persona("Kristel", "Salas", 208180970, "Kristel@gmail.com", "Kristel123");
-        //escribirEnPersona(p1);
+        escribirEnPersona(p1);
         //leerPersonas();
         
         Ejercicio e1 = new EjercicioArriba(0,"No se",2,"",2);
@@ -24,7 +24,8 @@ public class ProyectoPOO
         Rutina r3 = new Rutina("No se");
         //r3.agregarEjerciciosaRutina(e3);
         //escribirRutinasMedio(r3);
-        
+       
+        leerPersonas2();
         loginFrame frame = new loginFrame();
         frame.show();
     }
@@ -115,5 +116,73 @@ public class ProyectoPOO
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+    }
+    
+    
+    public static void escribirRutinasPersonas(Persona p){//recibe la persona que se va a insertar en el archivo    
+       try {
+            FileOutputStream ficheroSalida = new FileOutputStream("RutinasPersonas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
+            // se escriben los objetos de la clase Persona
+            objetoSalida.writeObject(p);//escribir
+            objetoSalida.close();//cerrar
+            } catch (FileNotFoundException e) {
+                System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+    }
+    
+    
+        public static void leerPersonas2(){  
+      try {
+            FileInputStream ficheroEntrada = new FileInputStream("RutinasPersonas.bin");
+            ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);
+            // se leen dos objetos de la clase Persona
+            Persona p1 = (Persona)objetoEntrada.readObject();//leer
+            //Persona p2 = (Persona)objetoEntrada.readObject();//leer
+            // se cierra el flujo de objetos objetoEntrada
+            objetoEntrada.close();//cerrar archivo
+            //System.out.println("DNI\t Nombre");
+            System.out.println(p1.toString());
+            //System.out.println(p2.toString());
+            } catch (FileNotFoundException e) {
+            System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+            System.out.println(e.getMessage());
+            } catch (Exception e) {
+            System.out.println(e.getMessage());
+            };
+  
+        }
+        
+        public static Persona buscarPersona(String correo, String contra){
+        try {
+            FileInputStream ficheroEntrada = new FileInputStream("Personas.bin");
+            ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);
+            
+            // se leen dos objetos de la clase Persona
+            Object aux = objetoEntrada.readObject();
+            while(aux != null)
+            {
+                Persona p1 = (Persona)aux;
+                if(p1.getCorreo().equals(correo) && p1.getContraseña().equals(contra)){
+                    return p1;
+                }    
+                aux = objetoEntrada.readObject();
+            }
+            
+            objetoEntrada.close();//cerrar archivo
+
+        } catch (FileNotFoundException e) {
+            System.out.println("¡El fichero no existe!");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        };
+        return null;
     }
 }
