@@ -194,7 +194,9 @@ public class ejercicioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pesoTFActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        cargarEjercicio();
+        summaryFrame frame = new summaryFrame();
+        frame.show();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     

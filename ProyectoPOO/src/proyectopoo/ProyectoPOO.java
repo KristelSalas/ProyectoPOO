@@ -6,28 +6,32 @@ public class ProyectoPOO
     public static void main(String[] args) 
     {
         
-        Persona p1 = new Persona("Kristel", "Salas", 208180970, "Kristel@gmail.com", "Kristel123");
-        escribirEnPersona(p1);
-        //leerPersonas();
+        Persona p1 = new Persona("Luis", "Mora", 200000000, "Luis@gmail.com", "Luis123");
+        //escribirEnPersona(p1);
+        leerPersonas();
         
-        Ejercicio e1 = new EjercicioArriba(0,"No se",2,"",2);
-        Rutina r1 = new Rutina("No se");
+        Ejercicio e1 = new EjercicioArriba(5,"Bench Press",15,"",0);
+        Rutina r1 = new Rutina("Rutina Superior");
         r1.agregarEjerciciosaRutina(e1);
-        //escribirRutinasArriba(r1);
+        escribirRutinasArriba(r1);
         
-        Ejercicio e2 = new EjercicioMedio("No se",2,"",2);
-        Rutina r2 = new Rutina("No se");
+        p1.agregarEjerciciosPersonalizados(r1);
+        p1.imprimirEjerciciosPersonalizados();
+        
+        
+        Ejercicio e2 = new EjercicioMedio("Planck Frontal",10,"",0);
+        Rutina r2 = new Rutina("Rutina Abdominal");
         r2.agregarEjerciciosaRutina(e2);
-        //escribirRutinasMedio(r2);
+        escribirRutinasMedio(r2);
         
-        Ejercicio e3 = new EjercicioAbajo(0,"No se",2,"",2);
-        Rutina r3 = new Rutina("No se");
-        //r3.agregarEjerciciosaRutina(e3);
-        //escribirRutinasMedio(r3);
+        Ejercicio e3 = new EjercicioAbajo(0,"Sentadilla Copa Sumo",15,"",0);
+        Rutina r3 = new Rutina("Rutina Inferior");
+        r3.agregarEjerciciosaRutina(e3);
+        escribirRutinasAbajo(r3);
        
-        leerPersonas2();
-        loginFrame frame = new loginFrame();
-        frame.show();
+        //leerPersonas2();
+        //loginFrame frame = new loginFrame();
+        //frame.show();
     }
     
     public static void escribirEnPersona(Persona p){//recibe la persona que se va a insertar en el archivo    
@@ -68,9 +72,9 @@ public class ProyectoPOO
     }
     
     
-    public static void escribirRutinasArriba(Rutina r){//recibe la persona que se va a insertar en el archivo    
+    public static void escribirRutinasArriba(Rutina r){//recibe las rutinas que se va a insertar en el archivo    
        try {
-            FileOutputStream ficheroSalida = new FileOutputStream("Personas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            FileOutputStream ficheroSalida = new FileOutputStream("RutinasArriba.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
             ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
             // se escriben los objetos de la clase Persona
             objetoSalida.writeObject(r);//escribir
@@ -85,9 +89,9 @@ public class ProyectoPOO
     }
     
     
-    public static void escribirRutinasMedio(Rutina r){//recibe la persona que se va a insertar en el archivo    
+    public static void escribirRutinasMedio(Rutina r){//recibe la rutina que se va a insertar en el archivo    
        try {
-            FileOutputStream ficheroSalida = new FileOutputStream("Personas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            FileOutputStream ficheroSalida = new FileOutputStream("RutinasMedio.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
             ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
             // se escriben los objetos de la clase Persona
             objetoSalida.writeObject(r);//escribir
@@ -102,9 +106,9 @@ public class ProyectoPOO
     }
     
     
-    public static void escribirRutinasAbajo(Rutina r){//recibe la persona que se va a insertar en el archivo    
+    public static void escribirRutinasAbajo(Rutina r){//recibe la rutina que se va a insertar en el archivo    
        try {
-            FileOutputStream ficheroSalida = new FileOutputStream("Personas.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
+            FileOutputStream ficheroSalida = new FileOutputStream("RutinasAbajo.bin",true);//cuando esta el true se escribe en el archivo ya existente cuando no lo crea
             ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
             // se escriben los objetos de la clase Persona
             objetoSalida.writeObject(r);//escribir
@@ -136,7 +140,7 @@ public class ProyectoPOO
     }
     
     
-        public static void leerPersonas2(){  
+    public static void leerPersonas2(){  
       try {
             FileInputStream ficheroEntrada = new FileInputStream("RutinasPersonas.bin");
             ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);

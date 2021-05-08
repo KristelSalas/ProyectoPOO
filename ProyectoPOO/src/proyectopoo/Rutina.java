@@ -34,6 +34,11 @@ public class Rutina {
     public String getNombreRutina() {
         return nombreRutina;
     }
+
+    @Override
+    public String toString() {
+        return "Rutina{" + "nombreRutina=" + nombreRutina + ", ejerciciosRutina=" + ejerciciosRutina + '}';
+    }
     
     
     
