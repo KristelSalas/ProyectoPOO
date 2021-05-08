@@ -32,6 +32,17 @@ public class Persona implements java.io.Serializable{
         rutinaPersonalizada.add(rutinaP);
     }
     
+    public void imprimirEjerciciosPersonalizados(){
+        for(Rutina x : rutinaPersonalizada){
+            x.toString();
+        }
+    }
+    
+    public void imprimirEjerciciosRealizados(){
+        for(Rutina x : rutinasRealizadas){
+            x.toString();
+        }
+    }
     
     public void setNombre(String nombre) {
         this.nombre = nombre;

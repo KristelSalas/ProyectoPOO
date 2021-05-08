@@ -51,7 +51,6 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="59" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
@@ -61,7 +60,6 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="56" pref="56" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="44" max="32767" attributes="0"/>
