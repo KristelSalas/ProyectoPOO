@@ -77,5 +77,23 @@ public class Persona implements java.io.Serializable{
     public String toString() {
         return "Persona{" + "nombre:" + nombre + ", apellido:" + apellido + ", cedula:" + cedula + ", correo:" + correo + ", contrase\u00f1a:" + contraseña + ", rutinasRealizadas:" + rutinasRealizadas + ", rutinaPersonalizada:" + rutinaPersonalizada + '}';
     }
+
+    public LinkedList<Rutina> getRutinasRealizadas() {
+        return rutinasRealizadas;
+    }
+
+    public LinkedList<Rutina> getRutinaPersonalizada() {
+        return rutinaPersonalizada;
+    }
+
+    public void setRutinasRealizadas(LinkedList<Rutina> rutinasRealizadas) {
+        this.rutinasRealizadas = rutinasRealizadas;
+    }
+
+    public void setRutinaPersonalizada(LinkedList<Rutina> rutinaPersonalizada) {
+        this.rutinaPersonalizada = rutinaPersonalizada;
+    }
+    
+    
     
 }

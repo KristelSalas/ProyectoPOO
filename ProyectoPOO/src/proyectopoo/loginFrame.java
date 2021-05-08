@@ -114,8 +114,9 @@ public class loginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public boolean buscarPersona(String correo, String contra){
+
+            
+    public Persona buscarPersona(String correo, String contra){
         try {
             FileInputStream ficheroEntrada = new FileInputStream("Personas.bin");
             ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);
@@ -126,7 +127,7 @@ public class loginFrame extends javax.swing.JFrame {
             {
                 Persona p1 = (Persona)aux;
                 if(p1.getCorreo().equals(correo) && p1.getContraseña().equals(contra)){
-                    return true;
+                    return p1;
                 }    
                 aux = objetoEntrada.readObject();
             }
@@ -140,18 +141,23 @@ public class loginFrame extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         };
-      return false;
+      return null;
     }
     
     public void login(String correo, String contrase){    
         Boolean valida = false;
-        boolean aja = buscarPersona(correo,contrase);
-        if (aja==true){
+        Persona p = buscarPersona(correo,contrase);
+
+        if (p == null){
             valida = true;
-            System.out.println(valida);
         }
-        if (valida == true){  
+        else{  
             mainFrame frame = new mainFrame();
+            frame.labelUsuario.setText(p.getNombre());
+            frame.contraOcultaM.setText(p.getContraseña());
+            frame.contraOcultaM.setVisible(false);
+            frame.correoOcultoM.setText(p.getCorreo());
+            frame.correoOcultoM.setVisible(false);
             frame.show(); 
             this.dispose();   
          }

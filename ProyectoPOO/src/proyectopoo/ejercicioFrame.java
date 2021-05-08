@@ -7,6 +7,11 @@ package proyectopoo;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.LinkedList;
 
 /**
  *
@@ -17,12 +22,19 @@ public class ejercicioFrame extends javax.swing.JFrame {
     /**
      * Creates new form ejercicioFrame
      */
+    
     public ejercicioFrame() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
+    
+    public void cargarEjercicio(){
+        Persona p = ProyectoPOO.buscarPersona(correoOcultoEje.getText(), contraOcultaEje.getText());
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,8 +44,8 @@ public class ejercicioFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        nombreRutinaLB = new javax.swing.JLabel();
+        nombreEjerLB = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tiempoMinTF = new javax.swing.JTextField();
@@ -43,16 +55,18 @@ public class ejercicioFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         repsTF = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        correoOcultoEje = new javax.swing.JLabel();
+        contraOcultaEje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dubai", 1, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nombre de Rutina");
+        nombreRutinaLB.setFont(new java.awt.Font("Dubai", 1, 36)); // NOI18N
+        nombreRutinaLB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreRutinaLB.setText("Nombre de Rutina");
 
-        jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Nombre de Ejercicio");
+        nombreEjerLB.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+        nombreEjerLB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreEjerLB.setText("Nombre de Ejercicio");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectopoo/Superior Gif/Aperturas con Mancuernas.gif"))); // NOI18N
         jLabel3.setText("1");
@@ -107,7 +121,7 @@ public class ejercicioFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreRutinaLB, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -122,16 +136,27 @@ public class ejercicioFrame extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(tiempoSecTF, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreEjerLB, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(355, 355, 355)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(correoOcultoEje)
+                            .addGap(156, 156, 156))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(156, 156, 156)
+                            .addComponent(contraOcultaEje)))
+                    .addContainerGap(356, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(nombreEjerLB)
+                    .addComponent(nombreRutinaLB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
@@ -152,6 +177,13 @@ public class ejercicioFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(57, 57, 57))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(433, 433, 433)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(correoOcultoEje)
+                        .addComponent(contraOcultaEje))
+                    .addContainerGap(433, Short.MAX_VALUE)))
         );
 
         pack();
@@ -162,9 +194,10 @@ public class ejercicioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pesoTFActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        cargarEjercicio();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -201,13 +234,15 @@ public class ejercicioFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel contraOcultaEje;
+    public javax.swing.JLabel correoOcultoEje;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel nombreEjerLB;
+    private javax.swing.JLabel nombreRutinaLB;
     private javax.swing.JTextField pesoTF;
     private javax.swing.JTextField repsTF;
     private javax.swing.JTextField tiempoMinTF;

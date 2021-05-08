@@ -29,6 +29,8 @@ public class tipoRutinaFrame extends javax.swing.JFrame {
         cRutinaPieB = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        correoOcultoTP = new javax.swing.JLabel();
+        contraOcultaTP = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tipo de Rutina");
@@ -90,6 +92,17 @@ public class tipoRutinaFrame extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)
                                 .addComponent(cRutinaPieB, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(83, 83, 83))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(488, 488, 488)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(correoOcultoTP)
+                            .addGap(156, 156, 156))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(156, 156, 156)
+                            .addComponent(contraOcultaTP)))
+                    .addContainerGap(489, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,6 +117,13 @@ public class tipoRutinaFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(318, 318, 318)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(correoOcultoTP)
+                        .addComponent(contraOcultaTP))
+                    .addContainerGap(318, Short.MAX_VALUE)))
         );
 
         pack();
@@ -111,14 +131,18 @@ public class tipoRutinaFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         mainFrame frame = new mainFrame();
-
         frame.show();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+
     private void cRutinaSupBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRutinaSupBActionPerformed
 
         crearRutinaFrame frame = new crearRutinaFrame();
+        frame.contraOculta.setText(contraOcultaTP.getText());
+        frame.correoOculto.setText(correoOcultoTP.getText());
+        frame.contraOculta.setVisible(false);
+        frame.correoOculto.setVisible(false);
         frame.show();
         frame.datoOculto.setText("superior");
         frame.datoOculto.setVisible(false);
@@ -127,6 +151,10 @@ public class tipoRutinaFrame extends javax.swing.JFrame {
 
     private void cRutinaAbBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRutinaAbBActionPerformed
         crearRutinaFrame frame = new crearRutinaFrame();
+        frame.contraOculta.setText(contraOcultaTP.getText());
+        frame.correoOculto.setText(correoOcultoTP.getText());
+        frame.contraOculta.setVisible(false);
+        frame.correoOculto.setVisible(false);
         frame.show();
         frame.datoOculto.setText("abdomen");
         frame.datoOculto.setVisible(false);
@@ -135,6 +163,10 @@ public class tipoRutinaFrame extends javax.swing.JFrame {
 
     private void cRutinaPieBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRutinaPieBActionPerformed
         crearRutinaFrame frame = new crearRutinaFrame();
+        frame.contraOculta.setText(contraOcultaTP.getText());
+        frame.correoOculto.setText(correoOcultoTP.getText());
+        frame.contraOculta.setVisible(false);
+        frame.correoOculto.setVisible(false);
         frame.show();
         frame.datoOculto.setText("piernas");
         frame.datoOculto.setVisible(false);
@@ -180,6 +212,8 @@ public class tipoRutinaFrame extends javax.swing.JFrame {
     private javax.swing.JButton cRutinaAbB;
     private javax.swing.JButton cRutinaPieB;
     private javax.swing.JButton cRutinaSupB;
+    public javax.swing.JLabel contraOcultaTP;
+    public javax.swing.JLabel correoOcultoTP;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
