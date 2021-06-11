@@ -1,6 +1,6 @@
 package proyectopoo;
 
-public abstract class Ejercicio {
+public abstract class Ejercicio extends Acciones {
     
     private String nombreEjercicio;
     private int repeticiones;
@@ -14,6 +14,14 @@ public abstract class Ejercicio {
         this.tiempoTardado = tiempoTardado;
     }
 
+    
+   @Override
+    public float tiempoTotal() {
+        return tiempoTardado;
+    }
+    
+    
+    
     public void setNombreEjercicio(String nombreEjercicio) {
         this.nombreEjercicio = nombreEjercicio;
     }
@@ -43,9 +51,4 @@ public abstract class Ejercicio {
         return nombreImagen;
     }
 
-
-    public float getTiempoTardado() {
-        return tiempoTardado;
-    }
-    
 }

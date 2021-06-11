@@ -6,7 +6,41 @@ public class ProyectoPOO
     public static void main(String[] args) 
     {
         
-        Persona p1 = new Persona("Luis", "Mora", 200000000, "Luis@gmail.com", "Luis123");
+        Acciones rutina = new Rutina();
+        
+        Ejercicio ejercicio1 = new EjercicioArriba(5,"Bench Press",15,"", 35);
+        Ejercicio ejercicio2 = new EjercicioMedio("Planck Frontal",10,"",15);
+        Ejercicio ejercicio3 = new EjercicioAbajo(0,"Sentadilla Copa Sumo",15,"",20);
+        
+        rutina.agregarEjerciciosaRutina(ejercicio1);
+        rutina.agregarEjerciciosaRutina(ejercicio2);
+        rutina.agregarEjerciciosaRutina(ejercicio3);
+        
+        System.out.println("Tiempo del primer ejercicio: " + rutina.getEjercicio(0).tiempoTotal());
+        System.out.println("Tiempo del segundo ejercicio: " + rutina.getEjercicio(1).tiempoTotal());
+        System.out.println("Tiempo del tercer ejercicio: " + rutina.getEjercicio(2).tiempoTotal());
+        
+        System.out.println("El total de minutos de la rutina es de: " + rutina.tiempoTotal());
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*Persona p1 = new Persona("Luis", "Mora", 200000000, "Luis@gmail.com", "Luis123");
         //escribirEnPersona(p1);
         leerPersonas();
         
@@ -187,6 +221,6 @@ public class ProyectoPOO
         } catch (Exception e) {
             System.out.println(e.getMessage());
         };
-        return null;
+        return null;*/
     }
 }
