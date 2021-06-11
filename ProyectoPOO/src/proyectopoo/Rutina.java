@@ -1,7 +1,7 @@
 package proyectopoo;
 import java.util.LinkedList;
 
-public class Rutina {
+public class Rutina extends Acciones{
     
     private String nombreRutina;
     private LinkedList<Ejercicio> ejerciciosRutina; 
@@ -10,10 +10,43 @@ public class Rutina {
         this.nombreRutina = nombreRutina;
         this.ejerciciosRutina = new LinkedList<Ejercicio>();
     }
+
+    public Rutina() {
+        this.ejerciciosRutina = new LinkedList<Ejercicio>();
+    }
     
-    public void agregarEjerciciosaRutina(Ejercicio ejercicio){
+    
+    
+    
+    @Override
+    public float tiempoTotal() {
+        float total = 0;
+        for(int x = 0; x < ejerciciosRutina.size(); x++){
+            total = total + ejerciciosRutina.get(x).tiempoTotal();
+        }
+        return total;
+    }
+    
+    @Override
+    public void agregarEjerciciosaRutina(Ejercicio ejercicio) {
         ejerciciosRutina.add(ejercicio);
     }
+    
+    @Override
+    public Acciones getEjercicio(int x) {
+        return ejerciciosRutina.get(x);
+    }
+        
+    
+    
+    
+    
+    
+    
+    
+    /*public void agregarEjerciciosaRutina(Ejercicio ejercicio){
+        ejerciciosRutina.add(ejercicio);
+    }*/
     
     public void quitarEjerciciosRutina(String nombre){
         for(Ejercicio x: ejerciciosRutina){
@@ -39,8 +72,6 @@ public class Rutina {
     public String toString() {
         return "Rutina{" + "nombreRutina=" + nombreRutina + ", ejerciciosRutina=" + ejerciciosRutina + '}';
     }
-    
-    
-    
-    
+
+  
 }
